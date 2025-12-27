@@ -13,14 +13,10 @@ showtoc: false
     alt="Profile Image"
     align="center"
     width="200"
-    class="profile-image-about"
 >}}
 
 Mình là **sinh viên Công nghệ Thông tin**, hiện đang học và thực hành **lập trình web với React và Node.js ở mức cơ bản**.  
 Mình yêu thích việc học thông qua làm project và từng bước cải thiện kỹ năng lập trình.
-
-I am an **Information Technology student**, currently learning **web development with React and Node.js at a basic level**.  
-I enjoy learning by building small projects and improving my coding skills step by step.
 
 ---
 
@@ -29,14 +25,6 @@ I enjoy learning by building small projects and improving my coding skills step 
 - Nắm vững kiến thức nền tảng về Frontend & Backend  
 - Hiểu cách một ứng dụng web hoạt động từ đầu đến cuối  
 - Cải thiện tư duy lập trình và kỹ năng giải quyết vấn đề  
-- Chuẩn bị nền tảng để đi thực tập hoặc làm việc trong tương lai  
-
----
-
-- Build a solid foundation in frontend and backend development  
-- Understand how a full web application works  
-- Improve problem-solving and coding mindset  
-- Prepare for internships or entry-level developer positions  
 
 ---
 
@@ -44,16 +32,7 @@ I enjoy learning by building small projects and improving my coding skills step 
 
 - Frontend: HTML · CSS · JavaScript · React
 - Backend: Node.js · Express · REST API
-Others: Git · GitHub · CLI · English Reading
-
----
-
-## 🧠 Quá trình học & dự án | Learning & Projects
-
-- Thực hiện các **project nhỏ phục vụ học tập**
-- Thực hành xây dựng web từ frontend đến backend
-- Tự học qua tài liệu, video và thực hành
-- Ghi chú lại kiến thức để dễ ôn tập và phát triển sau này
+- Others: Git · GitHub · CLI
 
 ---
 
@@ -67,21 +46,16 @@ Others: Git · GitHub · CLI · English Reading
 
 ---
 
-## 📘 Mục đích của blog | Blog Purpose
-
-- Ghi lại quá trình học lập trình
-- Chia sẻ kiến thức và kinh nghiệm cá nhân
-- Lưu trữ project và ghi chú kỹ thuật
-- Theo dõi sự tiến bộ của bản thân
-
----
-
 ## 📫 Liên hệ | Contact
 
 - 📧 Email: [your-email@example.com](mailto:your-email@example.com)  
-- 💻 GitHub: https://github.com/yourusername  
+- 💻 GitHub: [https://github.com/0898484311](https://github.com/0898484311)  
 
 ---
 
-✨ **Cảm ơn bạn đã ghé thăm blog của mình!**  
-✨ *Thank you for visiting my blog! I’m still learning and improving every day.*
+✨ **Cảm ơn bạn đã ghé thăm blog của mình!** ```
+
+### Lưu ý quan trọng sau khi sửa:
+1.  **Kiểm tra tên file ảnh:** Bạn hãy chắc chắn trên GitHub các file là `cc1.jpg`, `cc2.jpg`, `profile.jpg` (viết thường hoàn toàn). Nếu file thực tế là `CC1.JPG` hoặc `Profile.jpg`, bạn phải sửa lại tên file trong code cho khớp.
+2.  **Đợi Actions chạy:** Sau khi nhấn **Commit**, hãy đợi khoảng 1 phút để GitHub Actions hoàn thành việc đẩy dữ liệu mới lên.
+3.  **Xóa Cache:** Truy cập trang web và nhấn **Ctrl + F5** để ép trình duyệt nhận diện ảnh mới.
