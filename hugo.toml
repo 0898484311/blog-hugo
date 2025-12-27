@@ -2,34 +2,89 @@ baseURL = 'https://0898484311.github.io/blog-hugo/'
 languageCode = "vi-vn"
 title = "Blog Lập Trình Mạng"
 theme = "PaperMod"
-
-# Hai dòng này cực kỳ quan trọng để sửa lỗi ảnh ở trang con
-canonifyURLs = true
-relativeURLs = true
-
 enableRobotsTXT = true
 enableGitInfo = false
+buildDrafts = false
+buildFuture = false
+buildExpired = false
 
 [pagination]
 pagerSize = 3
 
+[outputs]
+home = ["HTML", "JSON", "RSS"]
+
+# Main sections - sections hiển thị trên homepage
 [params]
 mainSections = ["posts"]
 env = "production"
-# Đường dẫn ảnh phải có dấu / ở đầu
-images = ["/images/og-image.png"]
+title = "Blog Lập Trình Mạng"
+description = "Blog chia sẻ kiến thức về lập trình Java, mạng máy tính và phát triển phần mềm"
+author = "Sinh viên CNTT"
+keywords = ["Java", "Lập trình mạng", "Socket", "CNTT", "Phát triển phần mềm"]
+images = ["/images/og-image.png"]  # Thêm ảnh OG sau
+readingTime = true
 ShowReadingTime = true
+ShowPostNavLinks = true
+ShowBreadCrumbs = true
 ShowCodeCopyButtons = true
+ShowWordCount = true
+ShowRssButtonInSectionTermList = true
+UseHugoToc = true
+disableSpecial1stPost = false
+disableScrollToTop = false
+comments = false
+hidemeta = false
+hideSummary = false
 showtoc = true
+tocopen = false
 
+# Profile Mode Configuration
 [params.profileMode]
 enabled = true
 name = "SINH VIÊN CNTT"
 quote = "Build yourself quietly,<br>and let your success speak for you."
-# Phải có dấu / ở đầu đường dẫn
-imageUrl = "/images/profile.jpg"
-imageWidth = 150
-imageHeight = 150
+title = "Blog Lập Trình Mạng"
+subtitle = "Chia sẻ kiến thức về lập trình và công nghệ"
+imageUrl = "/images/profile.jpg"  # Đặt ảnh vào thư mục static/images/profile.jpg
+imageWidth = 500
+imageHeight = 600
+imageTitle = "Profile Image"
+
+# Social Icons
+[[params.socialIcons]]
+name = "github"
+url = "https://github.com"
+title = "GitHub"
+
+[[params.socialIcons]]
+name = "linkedin"
+url = "https://linkedin.com"
+title = "LinkedIn"
+
+[[params.socialIcons]]
+name = "email"
+url = "https://accounts.google.com"
+title = "Email"
+
+# Author Information
+[author]
+name = "Sinh viên CNTT"
+homepage = "/about/"
+
+# SEO Configuration
+[params.analytics]
+# Google Analytics - thêm ID nếu có
+# [params.analytics.google]
+# id = "G-XXXXXXXXXX"
+# SiteVerificationTag = ""
+
+# Google Site Verification - thêm tag nếu có
+[params.analytics.google]
+SiteVerificationTag = ""
+
+# Menu Configuration
+[menu]
 
 [[menu.main]]
 name = "Trang chủ"
@@ -38,10 +93,20 @@ weight = 1
 
 [[menu.main]]
 name = "Blog"
-url = "posts"
+url = "/posts/"
 weight = 2
 
 [[menu.main]]
 name = "Giới thiệu"
-url = "about"
+url = "/about/"
 weight = 3
+
+[[menu.main]]
+name = "Tìm kiếm"
+url = "/search/"
+weight = 4
+
+[[menu.main]]
+name = "Dự án"
+url = "/projects/"
+weight = 5
