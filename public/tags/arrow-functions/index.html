@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=51556&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Arrow Functions | Blog Lập Trình Mạng</title>
+<meta name="keywords" content="">
+<meta name="description" content="Blog chia sẻ kiến thức về lập trình Java, mạng máy tính và phát triển phần mềm">
+<meta name="author" content="Sinh viên CNTT">
+<link rel="canonical" href="http://localhost:51556/tags/arrow-functions/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.f74fcb36989005ee49e23ee7c043721979a734c1142e502c8a3f109c7904a693.css" integrity="sha256-90/LNpiQBe5J4j7nwENyGXmnNMEULlAsij8QnHkEppM=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:51556/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:51556/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:51556/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:51556/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:51556/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:51556/tags/arrow-functions/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="http://localhost:51556/tags/arrow-functions/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="http://localhost:51556/tags/arrow-functions/">
+  <meta property="og:site_name" content="Blog Lập Trình Mạng">
+  <meta property="og:title" content="Arrow Functions">
+  <meta property="og:description" content="Blog chia sẻ kiến thức về lập trình Java, mạng máy tính và phát triển phần mềm">
+  <meta property="og:locale" content="vi-vn">
+  <meta property="og:type" content="website">
+      <meta property="og:image" content="http://localhost:51556/images/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:51556/images/og-image.png">
+<meta name="twitter:title" content="Arrow Functions">
+<meta name="twitter:description" content="Blog chia sẻ kiến thức về lập trình Java, mạng máy tính và phát triển phần mềm">
+
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:51556/" accesskey="h" title="Blog Lập Trình Mạng (Alt + H)">Blog Lập Trình Mạng</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div><ul id="menu">
+            <li>
+                <a href="http://localhost:51556/" title="Trang chủ">
+                    <span>Trang chủ</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:51556/posts/" title="Blog">
+                    <span>Blog</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:51556/about/" title="Giới thiệu">
+                    <span>Giới thiệu</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:51556/search/" title="Tìm kiếm">
+                    <span>Tìm kiếm</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:51556/projects/" title="Dự án">
+                    <span>Dự án</span>
+                </a>
+            </li>
+        </ul></nav>
+</header>
+<main class="main"> 
+<header class="page-header"><div class="breadcrumbs"><a href="http://localhost:51556/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:51556/tags/">Tags</a></div>
+  <h1>
+    Arrow Functions
+    <a href="/tags/arrow-functions/index.xml" title="RSS" aria-label="RSS">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" height="23">
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+<figure class="entry-cover">
+        <img loading="lazy" src="http://localhost:51556/images/es6.jpg" alt="ES6&#43; trong JavaScript">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">ES6&#43; trong JavaScript - Tính năng mới quan trọng
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Giới thiệu ES6 (ECMAScript 2015) là một bước ngoặt lớn trong lịch sử JavaScript, mang đến nhiều tính năng mới giúp code ngắn gọn, dễ đọc và mạnh mẽ hơn. Các phiên bản ES7, ES8, ES9… tiếp tục bổ sung thêm nhiều tính năng hữu ích.
+Let và Const Let - Block scoped variable // Var - function scoped function example1() { if (true) { var x = 1; } console.log(x); // 1 - vẫn truy cập được } // Let - block scoped function example2() { if (true) { let y = 1; } console.log(y); // ReferenceError } Const - Constant variable const PI = 3.14159; // PI = 3.14; // Error: Assignment to constant variable const person = { name: &#34;John&#34; }; person.name = &#34;Jane&#34;; // OK - chỉ không thể reassign object // person = {}; // Error Arrow Functions Cú pháp ngắn gọn // Function thông thường function add(a, b) { return a &#43; b; } // Arrow function const add = (a, b) =&gt; { return a &#43; b; }; // Arrow function ngắn gọn const add = (a, b) =&gt; a &#43; b; // Một tham số const square = x =&gt; x * x; // Không tham số const greet = () =&gt; console.log(&#34;Hello&#34;); This binding // Function thông thường - this thay đổi const obj = { name: &#34;John&#34;, greet: function() { setTimeout(function() { console.log(this.name); // undefined }, 1000); } }; // Arrow function - this giữ nguyên const obj2 = { name: &#34;John&#34;, greet: function() { setTimeout(() =&gt; { console.log(this.name); // &#34;John&#34; }, 1000); } }; Template Literals const name = &#34;John&#34;; const age = 30; // Cách cũ const message = &#34;Tôi là &#34; &#43; name &#43; &#34;, &#34; &#43; age &#43; &#34; tuổi&#34;; // Template literal const message = `Tôi là ${name}, ${age} tuổi`; // Multi-line strings const html = ` &lt;div&gt; &lt;h1&gt;${name}&lt;/h1&gt; &lt;p&gt;Age: ${age}&lt;/p&gt; &lt;/div&gt; `; Destructuring Array Destructuring const numbers = [1, 2, 3, 4, 5]; // Cách cũ const first = numbers[0]; const second = numbers[1]; // Destructuring const [first, second, ...rest] = numbers; console.log(first); // 1 console.log(rest); // [3, 4, 5] // Skip elements const [, , third] = numbers; console.log(third); // 3 Object Destructuring const person = { name: &#34;John&#34;, age: 30, city: &#34;Hanoi&#34; }; // Cách cũ const name = person.name; const age = person.age; // Destructuring const { name, age } = person; // Rename const { name: fullName, age: years } = person; // Default values const { name, age, country = &#34;Vietnam&#34; } = person; Spread Operator Array Spread const arr1 = [1, 2, 3]; const arr2 = [4, 5, 6]; // Combine arrays const combined = [...arr1, ...arr2]; // [1, 2, 3, 4, 5, 6] // Copy array const copy = [...arr1]; // Add elements const newArr = [0, ...arr1, 4]; // [0, 1, 2, 3, 4] Object Spread const obj1 = { a: 1, b: 2 }; const obj2 = { c: 3, d: 4 }; // Merge objects const merged = { ...obj1, ...obj2 }; // { a: 1, b: 2, c: 3, d: 4 } // Override properties const updated = { ...obj1, b: 5 }; // { a: 1, b: 5 } Default Parameters // Cách cũ function greet(name) { name = name || &#34;Guest&#34;; console.log(`Hello, ${name}`); } // ES6 function greet(name = &#34;Guest&#34;) { console.log(`Hello, ${name}`); } greet(); // &#34;Hello, Guest&#34; greet(&#34;John&#34;); // &#34;Hello, John&#34; Rest Parameters // Cách cũ function sum() { let total = 0; for (let i = 0; i &lt; arguments.length; i&#43;&#43;) { total &#43;= arguments[i]; } return total; } // ES6 function sum(...numbers) { return numbers.reduce((total, num) =&gt; total &#43; num, 0); } sum(1, 2, 3, 4); // 10 Classes class Person { constructor(name, age) { this.name = name; this.age = age; } greet() { return `Hello, I&#39;m ${this.name}`; } static createBaby(name) { return new Person(name, 0); } } class Student extends Person { constructor(name, age, school) { super(name, age); this.school = school; } study() { return `${this.name} is studying at ${this.school}`; } } const student = new Student(&#34;John&#34;, 20, &#34;University&#34;); console.log(student.greet()); // &#34;Hello, I&#39;m John&#34; Modules (ES6) Export // math.js export const PI = 3.14159; export function add(a, b) { return a &#43; b; } export default function multiply(a, b) { return a * b; } Import // app.js import multiply, { PI, add } from &#39;./math.js&#39;; console.log(add(2, 3)); // 5 console.log(multiply(2, 3)); // 6 Promises và Async/Await Promises const fetchData = () =&gt; { return new Promise((resolve, reject) =&gt; { setTimeout(() =&gt; { resolve(&#34;Data received&#34;); }, 1000); }); }; fetchData() .then(data =&gt; console.log(data)) .catch(error =&gt; console.error(error)); Async/Await (ES2017) async function getData() { try { const data = await fetchData(); console.log(data); } catch (error) { console.error(error); } } Array Methods mới const numbers = [1, 2, 3, 4, 5]; // find const found = numbers.find(n =&gt; n &gt; 3); // 4 // findIndex const index = numbers.findIndex(n =&gt; n &gt; 3); // 3 // includes const hasThree = numbers.includes(3); // true // map const doubled = numbers.map(n =&gt; n * 2); // [2, 4, 6, 8, 10] // filter const evens = numbers.filter(n =&gt; n % 2 === 0); // [2, 4] // reduce const sum = numbers.reduce((acc, n) =&gt; acc &#43; n, 0); // 15 Ứng dụng thực tế ES6&#43; được sử dụng trong:
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-12-13 00:00:00 +0000 UTC'>December 13, 2025</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>970 words</span>&nbsp;·&nbsp;<span>Sinh viên CNTT</span></footer>
+  <a class="entry-link" aria-label="post link to ES6&#43; trong JavaScript - Tính năng mới quan trọng" href="http://localhost:51556/posts/es6-javascript/"></a>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="http://localhost:51556/">Blog Lập Trình Mạng</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><script defer src="/js/custom-effects.min.js"></script>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

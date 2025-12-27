@@ -1,0 +1,58 @@
+<div class="profile">
+    {{- with site.Params.profileMode }}
+    <div class="profile-container">
+        <!-- Left Side: Large Text -->
+        <div class="profile-text">
+            <div class="profile-name">{{ .name | default site.Params.author | default site.Title | markdownify }}</div>
+            <div class="profile-quote">{{ .quote | default "WORK HARD IN SILENCE<br>LET SUCCESS MAKE NOISE" | markdownify }}</div>
+        </div>
+        
+        <!-- Right Side: Profile Image -->
+        <div class="profile-image-wrapper">
+            {{- if .imageUrl -}}
+            {{- $img := "" }}
+            {{- if not (urls.Parse .imageUrl).IsAbs }}
+                {{- $img = resources.Get .imageUrl }}
+            {{- end }}
+            {{- if $img }}
+                {{- $processableFormats := (slice "jpg" "jpeg" "png" "tif" "bmp" "gif") -}}
+                {{- if hugo.IsExtended -}}
+                    {{- $processableFormats = $processableFormats | append "webp" -}}
+                {{- end -}}
+                {{- $prod := (hugo.IsProduction | or (eq site.Params.env "production")) }}
+                {{- if and (in $processableFormats $img.MediaType.SubType) (eq $prod true)}}
+                    {{- if (not (and (not .imageHeight) (not .imageWidth))) }}
+                        {{- $img = $img.Resize (printf "%dx%d" .imageWidth .imageHeight) }}
+                    {{- else if .imageHeight }}
+                        {{- $img = $img.Resize (printf "x%d" .imageHeight) }}
+                    {{ else if .imageWidth }}
+                        {{- $img = $img.Resize (printf "%dx" .imageWidth) }}
+                    {{ else }}
+                        {{- $img = $img.Resize "150x150" }}
+                    {{- end }}
+                {{- end }}
+                <img draggable="false" src="{{ $img.Permalink }}" alt="{{ .imageTitle | default "profile image" }}" title="{{ .imageTitle }}"
+                    class="profile-photo" />
+            {{- else }}
+            <img draggable="false" src="{{ .imageUrl | absURL }}" alt="{{ .imageTitle | default "profile image" }}" title="{{ .imageTitle }}"
+                class="profile-photo" />
+            {{- end }}
+            {{- end }}
+        </div>
+    </div>
+    
+    <!-- Social Icons Below -->
+    {{- if site.Params.socialIcons }}
+    <div class="profile-social">
+        {{- partial "social_icons.html" -}}
+    </div>
+    {{- end }}
+    {{- end}}
+</div>
+
+
+
+
+
+
+

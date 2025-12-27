@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=51556&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Java Collections Framework - Hướng dẫn toàn diện | Blog Lập Trình Mạng</title>
+<meta name="keywords" content="Java, Collections, Data Structures, ArrayList, HashMap">
+<meta name="description" content="Tìm hiểu về Java Collections Framework - các cấu trúc dữ liệu quan trọng trong Java">
+<meta name="author" content="Sinh viên CNTT">
+<link rel="canonical" href="http://localhost:51556/posts/java-collections-framework/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.f74fcb36989005ee49e23ee7c043721979a734c1142e502c8a3f109c7904a693.css" integrity="sha256-90/LNpiQBe5J4j7nwENyGXmnNMEULlAsij8QnHkEppM=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:51556/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:51556/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:51556/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:51556/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:51556/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:51556/posts/java-collections-framework/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="http://localhost:51556/posts/java-collections-framework/">
+  <meta property="og:site_name" content="Blog Lập Trình Mạng">
+  <meta property="og:title" content="Java Collections Framework - Hướng dẫn toàn diện">
+  <meta property="og:description" content="Tìm hiểu về Java Collections Framework - các cấu trúc dữ liệu quan trọng trong Java">
+  <meta property="og:locale" content="vi-vn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-12-13T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-12-13T00:00:00+00:00">
+    <meta property="article:tag" content="Java">
+    <meta property="article:tag" content="Collections">
+    <meta property="article:tag" content="Data Structures">
+    <meta property="article:tag" content="ArrayList">
+    <meta property="article:tag" content="HashMap">
+    <meta property="og:image" content="http://localhost:51556/images/collections.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:51556/images/collections.jpg">
+<meta name="twitter:title" content="Java Collections Framework - Hướng dẫn toàn diện">
+<meta name="twitter:description" content="Tìm hiểu về Java Collections Framework - các cấu trúc dữ liệu quan trọng trong Java">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://localhost:51556/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Java Collections Framework - Hướng dẫn toàn diện",
+      "item": "http://localhost:51556/posts/java-collections-framework/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Java Collections Framework - Hướng dẫn toàn diện",
+  "name": "Java Collections Framework - Hướng dẫn toàn diện",
+  "description": "Tìm hiểu về Java Collections Framework - các cấu trúc dữ liệu quan trọng trong Java",
+  "keywords": [
+    "Java", "Collections", "Data Structures", "ArrayList", "HashMap"
+  ],
+  "articleBody": "Giới thiệu Java Collections Framework là một trong những phần quan trọng nhất của Java API. Nó cung cấp các cấu trúc dữ liệu và thuật toán để lưu trữ và thao tác với các nhóm đối tượng một cách hiệu quả.\nCollections Framework là gì? Collections Framework là một kiến trúc thống nhất để biểu diễn và thao tác với các collections (tập hợp). Nó bao gồm:\nInterfaces: Định nghĩa các contract cho các loại collections Implementations: Các class cụ thể triển khai các interfaces Algorithms: Các phương thức tĩnh để thao tác với collections Các Interface chính 1. Collection Interface Interface gốc cho tất cả collections:\nCollection\u003cString\u003e collection = new ArrayList\u003c\u003e(); collection.add(\"Java\"); collection.add(\"Python\"); collection.add(\"JavaScript\"); System.out.println(\"Size: \" + collection.size()); // Size: 3 2. List Interface Danh sách có thứ tự, cho phép phần tử trùng lặp:\nList\u003cString\u003e list = new ArrayList\u003c\u003e(); list.add(\"First\"); list.add(\"Second\"); list.add(0, \"Zero\"); // Thêm vào vị trí đầu for (String item : list) { System.out.println(item); } 3. Set Interface Tập hợp không có thứ tự, không cho phép phần tử trùng lặp:\nSet\u003cString\u003e set = new HashSet\u003c\u003e(); set.add(\"Apple\"); set.add(\"Banana\"); set.add(\"Apple\"); // Bị bỏ qua vì đã tồn tại System.out.println(set.size()); // 2 4. Map Interface Cấu trúc key-value:\nMap\u003cString, Integer\u003e map = new HashMap\u003c\u003e(); map.put(\"Java\", 1995); map.put(\"Python\", 1991); map.put(\"JavaScript\", 1995); System.out.println(map.get(\"Java\")); // 1995 Các Implementation phổ biến ArrayList Danh sách động, truy cập nhanh theo index:\nArrayList\u003cString\u003e arrayList = new ArrayList\u003c\u003e(); arrayList.add(\"Element 1\"); arrayList.add(\"Element 2\"); arrayList.remove(0); // Xóa phần tử đầu // Truy cập nhanh String first = arrayList.get(0); Ưu điểm:\nTruy cập nhanh O(1) theo index Thêm/xóa ở cuối nhanh Nhược điểm:\nThêm/xóa ở giữa chậm O(n) LinkedList Danh sách liên kết, thêm/xóa nhanh:\nLinkedList\u003cString\u003e linkedList = new LinkedList\u003c\u003e(); linkedList.addFirst(\"First\"); linkedList.addLast(\"Last\"); linkedList.add(1, \"Middle\"); linkedList.removeFirst(); Ưu điểm:\nThêm/xóa nhanh O(1) ở bất kỳ vị trí nào Nhược điểm:\nTruy cập chậm O(n) theo index HashMap Bảng băm, truy cập nhanh theo key:\nHashMap\u003cString, String\u003e hashMap = new HashMap\u003c\u003e(); hashMap.put(\"name\", \"Java\"); hashMap.put(\"version\", \"17\"); String name = hashMap.get(\"name\"); boolean exists = hashMap.containsKey(\"version\"); Đặc điểm:\nTruy cập O(1) trung bình Không đảm bảo thứ tự TreeMap Map được sắp xếp theo key:\nTreeMap\u003cString, Integer\u003e treeMap = new TreeMap\u003c\u003e(); treeMap.put(\"Zebra\", 1); treeMap.put(\"Apple\", 2); treeMap.put(\"Banana\", 3); // Tự động sắp xếp: Apple, Banana, Zebra for (String key : treeMap.keySet()) { System.out.println(key); } So sánh các Collections Collection Thứ tự Trùng lặp Null Thread-safe ArrayList Có Có Có Không LinkedList Có Có Có Không HashSet Không Không Có Không TreeSet Có (sắp xếp) Không Không Không HashMap Không Key không Có Không TreeMap Có (sắp xếp) Key không Key không Không Best Practices ✅ Chọn đúng Collection cho nhu cầu:\n// Cần thứ tự và truy cập nhanh List\u003cString\u003e list = new ArrayList\u003c\u003e(); // Cần không trùng lặp Set\u003cString\u003e set = new HashSet\u003c\u003e(); // Cần key-value Map\u003cString, Object\u003e map = new HashMap\u003c\u003e(); ✅ Sử dụng Generics:\n// Đúng List\u003cString\u003e list = new ArrayList\u003c\u003e(); // Sai - Raw type List list = new ArrayList(); ✅ Sử dụng Iterator để duyệt:\nList\u003cString\u003e list = new ArrayList\u003c\u003e(); Iterator\u003cString\u003e iterator = list.iterator(); while (iterator.hasNext()) { String item = iterator.next(); // Xử lý item } ✅ Sử dụng Collections utility class:\nList\u003cInteger\u003e numbers = Arrays.asList(3, 1, 4, 1, 5); Collections.sort(numbers); Collections.reverse(numbers); int max = Collections.max(numbers); Ứng dụng thực tế Collections Framework được sử dụng trong:\n📊 Data Processing: Xử lý dữ liệu từ database 🎮 Game Development: Quản lý danh sách đối tượng 🌐 Web Development: Lưu trữ session, cache 📱 Mobile Apps: Quản lý danh sách items 🔍 Search Algorithms: Cấu trúc dữ liệu cho tìm kiếm Kết luận Java Collections Framework là công cụ mạnh mẽ và linh hoạt cho việc quản lý dữ liệu. Hiểu rõ các đặc điểm và cách sử dụng của từng collection sẽ giúp bạn viết code hiệu quả và tối ưu hơn.\nTài liệu tham khảo Oracle Java Collections Tutorial Java API Documentation: java.util.Collection Java API Documentation: java.util.Map Bạn có câu hỏi về Collections Framework? Hãy để lại comment bên dưới! 💬\n",
+  "wordCount" : "662",
+  "inLanguage": "en",
+  "image":"http://localhost:51556/images/collections.jpg","datePublished": "2025-12-13T00:00:00Z",
+  "dateModified": "2025-12-13T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Sinh viên CNTT"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:51556/posts/java-collections-framework/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Blog Lập Trình Mạng",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:51556/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:51556/" accesskey="h" title="Blog Lập Trình Mạng (Alt + H)">Blog Lập Trình Mạng</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div><ul id="menu">
+            <li>
+                <a href="http://localhost:51556/" title="Trang chủ">
+                    <span>Trang chủ</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:51556/posts/" title="Blog">
+                    <span>Blog</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:51556/about/" title="Giới thiệu">
+                    <span>Giới thiệu</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:51556/search/" title="Tìm kiếm">
+                    <span>Tìm kiếm</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:51556/projects/" title="Dự án">
+                    <span>Dự án</span>
+                </a>
+            </li>
+        </ul></nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:51556/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:51556/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Java Collections Framework - Hướng dẫn toàn diện
+    </h1>
+    <div class="post-description">
+      Tìm hiểu về Java Collections Framework - các cấu trúc dữ liệu quan trọng trong Java
+    </div>
+    <div class="post-meta"><span title='2025-12-13 00:00:00 +0000 UTC'>December 13, 2025</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>662 words</span>&nbsp;·&nbsp;<span>Sinh viên CNTT</span>
+
+</div>
+  </header> 
+<figure class="entry-cover">
+        <img loading="eager" src="http://localhost:51556/images/collections.jpg" alt="Java Collections Framework">
+        <figcaption>Java Collections Framework</figcaption>
+</figure><div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#giới-thiệu">Giới thiệu</a></li>
+    <li><a href="#collections-framework-là-gì">Collections Framework là gì?</a></li>
+    <li><a href="#các-interface-chính">Các Interface chính</a>
+      <ul>
+        <li><a href="#1-collection-interface">1. Collection Interface</a></li>
+        <li><a href="#2-list-interface">2. List Interface</a></li>
+        <li><a href="#3-set-interface">3. Set Interface</a></li>
+        <li><a href="#4-map-interface">4. Map Interface</a></li>
+      </ul>
+    </li>
+    <li><a href="#các-implementation-phổ-biến">Các Implementation phổ biến</a>
+      <ul>
+        <li><a href="#arraylist">ArrayList</a></li>
+        <li><a href="#linkedlist">LinkedList</a></li>
+        <li><a href="#hashmap">HashMap</a></li>
+        <li><a href="#treemap">TreeMap</a></li>
+      </ul>
+    </li>
+    <li><a href="#so-sánh-các-collections">So sánh các Collections</a></li>
+    <li><a href="#best-practices">Best Practices</a></li>
+    <li><a href="#ứng-dụng-thực-tế">Ứng dụng thực tế</a></li>
+    <li><a href="#kết-luận">Kết luận</a></li>
+    <li><a href="#tài-liệu-tham-khảo">Tài liệu tham khảo</a></li>
+  </ul>
+</nav>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h2 id="giới-thiệu">Giới thiệu<a hidden class="anchor" aria-hidden="true" href="#giới-thiệu">#</a></h2>
+<p>Java Collections Framework là một trong những phần quan trọng nhất của Java API. Nó cung cấp các cấu trúc dữ liệu và thuật toán để lưu trữ và thao tác với các nhóm đối tượng một cách hiệu quả.</p>
+<h2 id="collections-framework-là-gì">Collections Framework là gì?<a hidden class="anchor" aria-hidden="true" href="#collections-framework-là-gì">#</a></h2>
+<p><strong>Collections Framework</strong> là một kiến trúc thống nhất để biểu diễn và thao tác với các collections (tập hợp). Nó bao gồm:</p>
+<ul>
+<li><strong>Interfaces</strong>: Định nghĩa các contract cho các loại collections</li>
+<li><strong>Implementations</strong>: Các class cụ thể triển khai các interfaces</li>
+<li><strong>Algorithms</strong>: Các phương thức tĩnh để thao tác với collections</li>
+</ul>
+<h2 id="các-interface-chính">Các Interface chính<a hidden class="anchor" aria-hidden="true" href="#các-interface-chính">#</a></h2>
+<h3 id="1-collection-interface">1. Collection Interface<a hidden class="anchor" aria-hidden="true" href="#1-collection-interface">#</a></h3>
+<p>Interface gốc cho tất cả collections:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Collection<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> collection <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;</span>();
+</span></span><span style="display:flex;"><span>collection.<span style="color:#a6e22e">add</span>(<span style="color:#e6db74">&#34;Java&#34;</span>);
+</span></span><span style="display:flex;"><span>collection.<span style="color:#a6e22e">add</span>(<span style="color:#e6db74">&#34;Python&#34;</span>);
+</span></span><span style="display:flex;"><span>collection.<span style="color:#a6e22e">add</span>(<span style="color:#e6db74">&#34;JavaScript&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Size: &#34;</span> <span style="color:#f92672">+</span> collection.<span style="color:#a6e22e">size</span>()); <span style="color:#75715e">// Size: 3</span>
+</span></span></code></pre></div><h3 id="2-list-interface">2. List Interface<a hidden class="anchor" aria-hidden="true" href="#2-list-interface">#</a></h3>
+<p>Danh sách có thứ tự, cho phép phần tử trùng lặp:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> list <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;</span>();
+</span></span><span style="display:flex;"><span>list.<span style="color:#a6e22e">add</span>(<span style="color:#e6db74">&#34;First&#34;</span>);
+</span></span><span style="display:flex;"><span>list.<span style="color:#a6e22e">add</span>(<span style="color:#e6db74">&#34;Second&#34;</span>);
+</span></span><span style="display:flex;"><span>list.<span style="color:#a6e22e">add</span>(0, <span style="color:#e6db74">&#34;Zero&#34;</span>); <span style="color:#75715e">// Thêm vào vị trí đầu</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (String item : list) {
+</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(item);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="3-set-interface">3. Set Interface<a hidden class="anchor" aria-hidden="true" href="#3-set-interface">#</a></h3>
+<p>Tập hợp không có thứ tự, không cho phép phần tử trùng lặp:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Set<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> set <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashSet<span style="color:#f92672">&lt;&gt;</span>();
+</span></span><span style="display:flex;"><span>set.<span style="color:#a6e22e">add</span>(<span style="color:#e6db74">&#34;Apple&#34;</span>);
+</span></span><span style="display:flex;"><span>set.<span style="color:#a6e22e">add</span>(<span style="color:#e6db74">&#34;Banana&#34;</span>);
+</span></span><span style="display:flex;"><span>set.<span style="color:#a6e22e">add</span>(<span style="color:#e6db74">&#34;Apple&#34;</span>); <span style="color:#75715e">// Bị bỏ qua vì đã tồn tại</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(set.<span style="color:#a6e22e">size</span>()); <span style="color:#75715e">// 2</span>
+</span></span></code></pre></div><h3 id="4-map-interface">4. Map Interface<a hidden class="anchor" aria-hidden="true" href="#4-map-interface">#</a></h3>
+<p>Cấu trúc key-value:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Map<span style="color:#f92672">&lt;</span>String, Integer<span style="color:#f92672">&gt;</span> map <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">&lt;&gt;</span>();
+</span></span><span style="display:flex;"><span>map.<span style="color:#a6e22e">put</span>(<span style="color:#e6db74">&#34;Java&#34;</span>, 1995);
+</span></span><span style="display:flex;"><span>map.<span style="color:#a6e22e">put</span>(<span style="color:#e6db74">&#34;Python&#34;</span>, 1991);
+</span></span><span style="display:flex;"><span>map.<span style="color:#a6e22e">put</span>(<span style="color:#e6db74">&#34;JavaScript&#34;</span>, 1995);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(map.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#34;Java&#34;</span>)); <span style="color:#75715e">// 1995</span>
+</span></span></code></pre></div><h2 id="các-implementation-phổ-biến">Các Implementation phổ biến<a hidden class="anchor" aria-hidden="true" href="#các-implementation-phổ-biến">#</a></h2>
+<h3 id="arraylist">ArrayList<a hidden class="anchor" aria-hidden="true" href="#arraylist">#</a></h3>
+<p>Danh sách động, truy cập nhanh theo index:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>ArrayList<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> arrayList <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;</span>();
+</span></span><span style="display:flex;"><span>arrayList.<span style="color:#a6e22e">add</span>(<span style="color:#e6db74">&#34;Element 1&#34;</span>);
+</span></span><span style="display:flex;"><span>arrayList.<span style="color:#a6e22e">add</span>(<span style="color:#e6db74">&#34;Element 2&#34;</span>);
+</span></span><span style="display:flex;"><span>arrayList.<span style="color:#a6e22e">remove</span>(0); <span style="color:#75715e">// Xóa phần tử đầu</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Truy cập nhanh</span>
+</span></span><span style="display:flex;"><span>String first <span style="color:#f92672">=</span> arrayList.<span style="color:#a6e22e">get</span>(0);
+</span></span></code></pre></div><p><strong>Ưu điểm:</strong></p>
+<ul>
+<li>Truy cập nhanh O(1) theo index</li>
+<li>Thêm/xóa ở cuối nhanh</li>
+</ul>
+<p><strong>Nhược điểm:</strong></p>
+<ul>
+<li>Thêm/xóa ở giữa chậm O(n)</li>
+</ul>
+<h3 id="linkedlist">LinkedList<a hidden class="anchor" aria-hidden="true" href="#linkedlist">#</a></h3>
+<p>Danh sách liên kết, thêm/xóa nhanh:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>LinkedList<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> linkedList <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> LinkedList<span style="color:#f92672">&lt;&gt;</span>();
+</span></span><span style="display:flex;"><span>linkedList.<span style="color:#a6e22e">addFirst</span>(<span style="color:#e6db74">&#34;First&#34;</span>);
+</span></span><span style="display:flex;"><span>linkedList.<span style="color:#a6e22e">addLast</span>(<span style="color:#e6db74">&#34;Last&#34;</span>);
+</span></span><span style="display:flex;"><span>linkedList.<span style="color:#a6e22e">add</span>(1, <span style="color:#e6db74">&#34;Middle&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>linkedList.<span style="color:#a6e22e">removeFirst</span>();
+</span></span></code></pre></div><p><strong>Ưu điểm:</strong></p>
+<ul>
+<li>Thêm/xóa nhanh O(1) ở bất kỳ vị trí nào</li>
+</ul>
+<p><strong>Nhược điểm:</strong></p>
+<ul>
+<li>Truy cập chậm O(n) theo index</li>
+</ul>
+<h3 id="hashmap">HashMap<a hidden class="anchor" aria-hidden="true" href="#hashmap">#</a></h3>
+<p>Bảng băm, truy cập nhanh theo key:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>HashMap<span style="color:#f92672">&lt;</span>String, String<span style="color:#f92672">&gt;</span> hashMap <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">&lt;&gt;</span>();
+</span></span><span style="display:flex;"><span>hashMap.<span style="color:#a6e22e">put</span>(<span style="color:#e6db74">&#34;name&#34;</span>, <span style="color:#e6db74">&#34;Java&#34;</span>);
+</span></span><span style="display:flex;"><span>hashMap.<span style="color:#a6e22e">put</span>(<span style="color:#e6db74">&#34;version&#34;</span>, <span style="color:#e6db74">&#34;17&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>String name <span style="color:#f92672">=</span> hashMap.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#34;name&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">boolean</span> exists <span style="color:#f92672">=</span> hashMap.<span style="color:#a6e22e">containsKey</span>(<span style="color:#e6db74">&#34;version&#34;</span>);
+</span></span></code></pre></div><p><strong>Đặc điểm:</strong></p>
+<ul>
+<li>Truy cập O(1) trung bình</li>
+<li>Không đảm bảo thứ tự</li>
+</ul>
+<h3 id="treemap">TreeMap<a hidden class="anchor" aria-hidden="true" href="#treemap">#</a></h3>
+<p>Map được sắp xếp theo key:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>TreeMap<span style="color:#f92672">&lt;</span>String, Integer<span style="color:#f92672">&gt;</span> treeMap <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> TreeMap<span style="color:#f92672">&lt;&gt;</span>();
+</span></span><span style="display:flex;"><span>treeMap.<span style="color:#a6e22e">put</span>(<span style="color:#e6db74">&#34;Zebra&#34;</span>, 1);
+</span></span><span style="display:flex;"><span>treeMap.<span style="color:#a6e22e">put</span>(<span style="color:#e6db74">&#34;Apple&#34;</span>, 2);
+</span></span><span style="display:flex;"><span>treeMap.<span style="color:#a6e22e">put</span>(<span style="color:#e6db74">&#34;Banana&#34;</span>, 3);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Tự động sắp xếp: Apple, Banana, Zebra</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (String key : treeMap.<span style="color:#a6e22e">keySet</span>()) {
+</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(key);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="so-sánh-các-collections">So sánh các Collections<a hidden class="anchor" aria-hidden="true" href="#so-sánh-các-collections">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th>Collection</th>
+          <th>Thứ tự</th>
+          <th>Trùng lặp</th>
+          <th>Null</th>
+          <th>Thread-safe</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>ArrayList</td>
+          <td>Có</td>
+          <td>Có</td>
+          <td>Có</td>
+          <td>Không</td>
+      </tr>
+      <tr>
+          <td>LinkedList</td>
+          <td>Có</td>
+          <td>Có</td>
+          <td>Có</td>
+          <td>Không</td>
+      </tr>
+      <tr>
+          <td>HashSet</td>
+          <td>Không</td>
+          <td>Không</td>
+          <td>Có</td>
+          <td>Không</td>
+      </tr>
+      <tr>
+          <td>TreeSet</td>
+          <td>Có (sắp xếp)</td>
+          <td>Không</td>
+          <td>Không</td>
+          <td>Không</td>
+      </tr>
+      <tr>
+          <td>HashMap</td>
+          <td>Không</td>
+          <td>Key không</td>
+          <td>Có</td>
+          <td>Không</td>
+      </tr>
+      <tr>
+          <td>TreeMap</td>
+          <td>Có (sắp xếp)</td>
+          <td>Key không</td>
+          <td>Key không</td>
+          <td>Không</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="best-practices">Best Practices<a hidden class="anchor" aria-hidden="true" href="#best-practices">#</a></h2>
+<p>✅ <strong>Chọn đúng Collection cho nhu cầu:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Cần thứ tự và truy cập nhanh</span>
+</span></span><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> list <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Cần không trùng lặp</span>
+</span></span><span style="display:flex;"><span>Set<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> set <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashSet<span style="color:#f92672">&lt;&gt;</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Cần key-value</span>
+</span></span><span style="display:flex;"><span>Map<span style="color:#f92672">&lt;</span>String, Object<span style="color:#f92672">&gt;</span> map <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">&lt;&gt;</span>();
+</span></span></code></pre></div><p>✅ <strong>Sử dụng Generics:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Đúng</span>
+</span></span><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> list <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Sai - Raw type</span>
+</span></span><span style="display:flex;"><span>List list <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList();
+</span></span></code></pre></div><p>✅ <strong>Sử dụng Iterator để duyệt:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> list <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;</span>();
+</span></span><span style="display:flex;"><span>Iterator<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> iterator <span style="color:#f92672">=</span> list.<span style="color:#a6e22e">iterator</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> (iterator.<span style="color:#a6e22e">hasNext</span>()) {
+</span></span><span style="display:flex;"><span>    String item <span style="color:#f92672">=</span> iterator.<span style="color:#a6e22e">next</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Xử lý item</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>✅ <strong>Sử dụng Collections utility class:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> numbers <span style="color:#f92672">=</span> Arrays.<span style="color:#a6e22e">asList</span>(3, 1, 4, 1, 5);
+</span></span><span style="display:flex;"><span>Collections.<span style="color:#a6e22e">sort</span>(numbers);
+</span></span><span style="display:flex;"><span>Collections.<span style="color:#a6e22e">reverse</span>(numbers);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> max <span style="color:#f92672">=</span> Collections.<span style="color:#a6e22e">max</span>(numbers);
+</span></span></code></pre></div><h2 id="ứng-dụng-thực-tế">Ứng dụng thực tế<a hidden class="anchor" aria-hidden="true" href="#ứng-dụng-thực-tế">#</a></h2>
+<p>Collections Framework được sử dụng trong:</p>
+<ul>
+<li>📊 <strong>Data Processing</strong>: Xử lý dữ liệu từ database</li>
+<li>🎮 <strong>Game Development</strong>: Quản lý danh sách đối tượng</li>
+<li>🌐 <strong>Web Development</strong>: Lưu trữ session, cache</li>
+<li>📱 <strong>Mobile Apps</strong>: Quản lý danh sách items</li>
+<li>🔍 <strong>Search Algorithms</strong>: Cấu trúc dữ liệu cho tìm kiếm</li>
+</ul>
+<h2 id="kết-luận">Kết luận<a hidden class="anchor" aria-hidden="true" href="#kết-luận">#</a></h2>
+<p>Java Collections Framework là công cụ mạnh mẽ và linh hoạt cho việc quản lý dữ liệu. Hiểu rõ các đặc điểm và cách sử dụng của từng collection sẽ giúp bạn viết code hiệu quả và tối ưu hơn.</p>
+<h2 id="tài-liệu-tham-khảo">Tài liệu tham khảo<a hidden class="anchor" aria-hidden="true" href="#tài-liệu-tham-khảo">#</a></h2>
+<ul>
+<li><a href="https://docs.oracle.com/javase/tutorial/collections/">Oracle Java Collections Tutorial</a></li>
+<li>Java API Documentation: <code>java.util.Collection</code></li>
+<li>Java API Documentation: <code>java.util.Map</code></li>
+</ul>
+<hr>
+<p><strong>Bạn có câu hỏi về Collections Framework? Hãy để lại comment bên dưới!</strong> 💬</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:51556/tags/java/">Java</a></li>
+      <li><a href="http://localhost:51556/tags/collections/">Collections</a></li>
+      <li><a href="http://localhost:51556/tags/data-structures/">Data Structures</a></li>
+      <li><a href="http://localhost:51556/tags/arraylist/">ArrayList</a></li>
+      <li><a href="http://localhost:51556/tags/hashmap/">HashMap</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="http://localhost:51556/posts/exception-handling-java/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Exception Handling trong Java - Xử lý lỗi đúng cách</span>
+  </a>
+  <a class="next" href="http://localhost:51556/posts/multithreading-java/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Multithreading trong Java - Lập trình đa luồng</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="http://localhost:51556/">Blog Lập Trình Mạng</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><script defer src="/js/custom-effects.min.js"></script>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

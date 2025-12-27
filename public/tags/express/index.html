@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=51556&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Express | Blog Lập Trình Mạng</title>
+<meta name="keywords" content="">
+<meta name="description" content="Blog chia sẻ kiến thức về lập trình Java, mạng máy tính và phát triển phần mềm">
+<meta name="author" content="Sinh viên CNTT">
+<link rel="canonical" href="http://localhost:51556/tags/express/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.f74fcb36989005ee49e23ee7c043721979a734c1142e502c8a3f109c7904a693.css" integrity="sha256-90/LNpiQBe5J4j7nwENyGXmnNMEULlAsij8QnHkEppM=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:51556/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:51556/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:51556/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:51556/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:51556/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:51556/tags/express/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="http://localhost:51556/tags/express/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="http://localhost:51556/tags/express/">
+  <meta property="og:site_name" content="Blog Lập Trình Mạng">
+  <meta property="og:title" content="Express">
+  <meta property="og:description" content="Blog chia sẻ kiến thức về lập trình Java, mạng máy tính và phát triển phần mềm">
+  <meta property="og:locale" content="vi-vn">
+  <meta property="og:type" content="website">
+      <meta property="og:image" content="http://localhost:51556/images/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:51556/images/og-image.png">
+<meta name="twitter:title" content="Express">
+<meta name="twitter:description" content="Blog chia sẻ kiến thức về lập trình Java, mạng máy tính và phát triển phần mềm">
+
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:51556/" accesskey="h" title="Blog Lập Trình Mạng (Alt + H)">Blog Lập Trình Mạng</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div><ul id="menu">
+            <li>
+                <a href="http://localhost:51556/" title="Trang chủ">
+                    <span>Trang chủ</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:51556/posts/" title="Blog">
+                    <span>Blog</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:51556/about/" title="Giới thiệu">
+                    <span>Giới thiệu</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:51556/search/" title="Tìm kiếm">
+                    <span>Tìm kiếm</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:51556/projects/" title="Dự án">
+                    <span>Dự án</span>
+                </a>
+            </li>
+        </ul></nav>
+</header>
+<main class="main"> 
+<header class="page-header"><div class="breadcrumbs"><a href="http://localhost:51556/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:51556/tags/">Tags</a></div>
+  <h1>
+    Express
+    <a href="/tags/express/index.xml" title="RSS" aria-label="RSS">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" height="23">
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+<figure class="entry-cover">
+        <img loading="lazy" src="http://localhost:51556/images/nodejs.jpg" alt="Node.js cơ bản">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Node.js cơ bản - JavaScript trên Server
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Giới thiệu Node.js là một JavaScript runtime được xây dựng trên Chrome’s V8 JavaScript engine. Nó cho phép chạy JavaScript trên server side, mở ra khả năng phát triển full-stack với một ngôn ngữ duy nhất.
+Node.js là gì? Node.js là một platform cho phép chạy JavaScript bên ngoài browser. Nó sử dụng event-driven, non-blocking I/O model, làm cho nó nhẹ và hiệu quả cho các ứng dụng real-time.
+Đặc điểm chính ⚡ Non-blocking I/O: Xử lý nhiều request đồng thời 🚀 Fast: Được xây dựng trên V8 engine 📦 NPM: Package manager lớn nhất thế giới 🔄 Event-driven: Phù hợp cho real-time applications Cài đặt Node.js Kiểm tra phiên bản node --version npm --version Tạo project mới mkdir my-node-app cd my-node-app npm init -y File System Module Đọc file const fs = require(&#39;fs&#39;); // Đọc file đồng bộ const data = fs.readFileSync(&#39;file.txt&#39;, &#39;utf8&#39;); console.log(data); // Đọc file bất đồng bộ fs.readFile(&#39;file.txt&#39;, &#39;utf8&#39;, (err, data) =&gt; { if (err) { console.error(err); return; } console.log(data); }); // Với Promises (Node.js 10&#43;) const fsPromises = require(&#39;fs&#39;).promises; async function readFile() { try { const data = await fsPromises.readFile(&#39;file.txt&#39;, &#39;utf8&#39;); console.log(data); } catch (err) { console.error(err); } } Ghi file const fs = require(&#39;fs&#39;); // Ghi file đồng bộ fs.writeFileSync(&#39;output.txt&#39;, &#39;Hello Node.js&#39;); // Ghi file bất đồng bộ fs.writeFile(&#39;output.txt&#39;, &#39;Hello Node.js&#39;, (err) =&gt; { if (err) { console.error(err); return; } console.log(&#39;File written successfully&#39;); }); HTTP Module Tạo HTTP Server const http = require(&#39;http&#39;); const server = http.createServer((req, res) =&gt; { res.writeHead(200, { &#39;Content-Type&#39;: &#39;text/html&#39; }); res.end(&#39;&lt;h1&gt;Hello Node.js!&lt;/h1&gt;&#39;); }); server.listen(3000, () =&gt; { console.log(&#39;Server running on http://localhost:3000&#39;); }); Routing đơn giản const http = require(&#39;http&#39;); const server = http.createServer((req, res) =&gt; { const url = req.url; if (url === &#39;/&#39;) { res.writeHead(200, { &#39;Content-Type&#39;: &#39;text/html&#39; }); res.end(&#39;&lt;h1&gt;Home Page&lt;/h1&gt;&#39;); } else if (url === &#39;/about&#39;) { res.writeHead(200, { &#39;Content-Type&#39;: &#39;text/html&#39; }); res.end(&#39;&lt;h1&gt;About Page&lt;/h1&gt;&#39;); } else { res.writeHead(404, { &#39;Content-Type&#39;: &#39;text/html&#39; }); res.end(&#39;&lt;h1&gt;404 Not Found&lt;/h1&gt;&#39;); } }); server.listen(3000); NPM - Node Package Manager Cài đặt package # Local install npm install express # Global install npm install -g nodemon # Dev dependencies npm install --save-dev jest package.json { &#34;name&#34;: &#34;my-app&#34;, &#34;version&#34;: &#34;1.0.0&#34;, &#34;description&#34;: &#34;My Node.js app&#34;, &#34;main&#34;: &#34;index.js&#34;, &#34;scripts&#34;: { &#34;start&#34;: &#34;node index.js&#34;, &#34;dev&#34;: &#34;nodemon index.js&#34;, &#34;test&#34;: &#34;jest&#34; }, &#34;dependencies&#34;: { &#34;express&#34;: &#34;^4.18.0&#34; }, &#34;devDependencies&#34;: { &#34;nodemon&#34;: &#34;^2.0.0&#34; } } Express.js Framework Cài đặt Express npm install express Server đơn giản với Express const express = require(&#39;express&#39;); const app = express(); const PORT = 3000; app.get(&#39;/&#39;, (req, res) =&gt; { res.send(&#39;Hello Express!&#39;); }); app.get(&#39;/api/users&#39;, (req, res) =&gt; { res.json({ users: [&#39;John&#39;, &#39;Jane&#39;] }); }); app.listen(PORT, () =&gt; { console.log(`Server running on http://localhost:${PORT}`); }); Middleware const express = require(&#39;express&#39;); const app = express(); // Built-in middleware app.use(express.json()); // Parse JSON app.use(express.urlencoded({ extended: true })); // Parse form data // Custom middleware app.use((req, res, next) =&gt; { console.log(`${req.method} ${req.path}`); next(); }); // Route-specific middleware function authMiddleware(req, res, next) { const token = req.headers.authorization; if (token) { next(); } else { res.status(401).json({ error: &#39;Unauthorized&#39; }); } } app.get(&#39;/protected&#39;, authMiddleware, (req, res) =&gt; { res.json({ message: &#39;Protected route&#39; }); }); Environment Variables Sử dụng dotenv npm install dotenv require(&#39;dotenv&#39;).config(); const PORT = process.env.PORT || 3000; const DB_URL = process.env.DATABASE_URL; console.log(`Server running on port ${PORT}`); .env file PORT=3000 DATABASE_URL=mongodb://localhost:27017/mydb SECRET_KEY=your-secret-key Modules và Exports Export module // math.js function add(a, b) { return a &#43; b; } function subtract(a, b) { return a - b; } // Named exports module.exports = { add, subtract }; // Hoặc exports.add = add; exports.subtract = subtract; Import module // app.js const { add, subtract } = require(&#39;./math&#39;); console.log(add(2, 3)); // 5 console.log(subtract(5, 2)); // 3 ES6 Modules // math.mjs export function add(a, b) { return a &#43; b; } // app.mjs import { add } from &#39;./math.mjs&#39;; console.log(add(2, 3)); Error Handling // Try-catch async function fetchData() { try { const data = await getData(); return data; } catch (error) { console.error(&#39;Error:&#39;, error.message); throw error; } } // Error middleware trong Express app.use((err, req, res, next) =&gt; { console.error(err.stack); res.status(500).json({ error: &#39;Something went wrong!&#39; }); }); Best Practices ✅ Sử dụng async/await:
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-12-13 00:00:00 +0000 UTC'>December 13, 2025</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>852 words</span>&nbsp;·&nbsp;<span>Sinh viên CNTT</span></footer>
+  <a class="entry-link" aria-label="post link to Node.js cơ bản - JavaScript trên Server" href="http://localhost:51556/posts/nodejs-co-ban/"></a>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="http://localhost:51556/">Blog Lập Trình Mạng</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><script defer src="/js/custom-effects.min.js"></script>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

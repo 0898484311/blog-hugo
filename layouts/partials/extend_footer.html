@@ -1,0 +1,18 @@
+{{- /* Footer custom content area start */ -}}
+{{- /*     Insert any custom code web-analytics, resources, etc. here */ -}}
+
+{{- /* Custom JavaScript for animations and effects */ -}}
+{{- $customJS := resources.Get "js/custom-effects.js" -}}
+{{- if $customJS }}
+    {{- $customJS = $customJS | js.Build | minify -}}
+    <script defer src="{{ $customJS.RelPermalink }}"></script>
+{{- end }}
+
+{{- /* Footer custom content area end */ -}}
+
+
+
+
+
+
+

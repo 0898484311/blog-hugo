@@ -1,0 +1,533 @@
+/* ============================================
+   Custom Animations & Effects for Blog
+============================================ */
+
+/* Smooth Scroll Behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===============================
+   Animations
+================================ */
+
+/* Fade-in Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Typing Effect */
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink {
+  from, to { border-color: transparent; }
+  50% { border-color: var(--primary); }
+}
+
+/* Gradient Animation */
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Loading shimmer */
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+/* ===============================
+   Post & Content Animations
+================================ */
+
+.post-entry {
+  animation: fadeInUp 0.6s ease-out;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.post-entry:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.post-content {
+  animation: fadeIn 0.8s ease-out;
+}
+
+/* Entry cover size */
+.post-entry .entry-cover img,
+.first-entry .entry-cover img {
+  width: 33.33% !important;
+  max-width: 33.33% !important;
+  margin: 0 auto;
+  display: block;
+}
+
+/* ===============================
+   Header & Navigation
+================================ */
+
+header {
+  animation: fadeIn 0.5s ease-out;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+header.scrolled {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] .header {
+  background: var(--theme);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav {
+  background: transparent;
+}
+
+#menu {
+  display: flex;
+  gap: 0;
+}
+
+#menu li {
+  list-style: none;
+}
+
+#menu a {
+  display: inline-block;
+  padding: 12px 20px;
+  color: var(--primary) !important;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+  position: relative;
+  text-decoration: none;
+  background: transparent;
+}
+
+#menu a:hover {
+  color: var(--primary);
+  background: rgba(0, 0, 0, 0.02);
+}
+
+[data-theme="dark"] #menu a:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+#menu a span.active {
+  background: #e0f2f1;
+  color: #00695c !important;
+  padding: 12px 20px;
+  font-weight: 500;
+  border-bottom: none;
+}
+
+[data-theme="dark"] #menu a span.active {
+  background: rgba(0, 150, 136, 0.2);
+  color: #4db6ac !important;
+}
+
+/* Logo */
+.logo a {
+  color: var(--primary) !important;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Theme Toggle */
+#theme-toggle {
+  color: var(--primary) !important;
+  background: transparent;
+  border-radius: 4px;
+  padding: 4px 8px;
+  transition: all 0.2s ease;
+}
+
+#theme-toggle:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] #theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* ===============================
+   UI Effects
+================================ */
+
+pre {
+  animation: fadeIn 0.6s ease-out;
+  transition: transform 0.2s ease;
+}
+
+pre:hover {
+  transform: scale(1.01);
+}
+
+button,
+.button,
+a.button {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+button:hover,
+.button:hover,
+a.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.post-content img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 8px;
+}
+
+.post-content img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+table {
+  animation: fadeIn 0.6s ease-out;
+}
+
+table tr {
+  transition: background-color 0.2s ease;
+}
+
+table tr:hover {
+  background-color: var(--code-bg);
+}
+
+/* Tags */
+.post-tags a,
+.post-categories a {
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.post-tags a:hover,
+.post-categories a:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Scroll to top */
+.top-link {
+  transition: all 0.3s ease;
+}
+
+.top-link:hover {
+  transform: scale(1.1);
+}
+
+/* Loading */
+.loading {
+  animation: shimmer 2s infinite linear;
+  background: linear-gradient(
+    to right,
+    var(--code-bg) 0%,
+    var(--tertiary) 50%,
+    var(--code-bg) 100%
+  );
+  background-size: 1000px 100%;
+}
+
+/* Typing effect */
+.typing-effect {
+  overflow: hidden;
+  border-right: 2px solid var(--primary);
+  white-space: nowrap;
+  animation: typing 3s steps(40, end), blink 0.75s step-end infinite;
+}
+
+/* Card flip */
+.card-flip {
+  perspective: 1000px;
+}
+
+.card-flip-inner {
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.card-flip:hover .card-flip-inner {
+  transform: rotateY(180deg);
+}
+
+/* Pulse */
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+/* Gradient Text */
+.gradient-text {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient 15s ease infinite;
+}
+
+/* Stagger Animation */
+.post-entry:nth-child(1) { animation-delay: 0.1s; }
+.post-entry:nth-child(2) { animation-delay: 0.2s; }
+.post-entry:nth-child(3) { animation-delay: 0.3s; }
+.post-entry:nth-child(4) { animation-delay: 0.4s; }
+.post-entry:nth-child(5) { animation-delay: 0.5s; }
+
+/* Page Transition */
+body {
+  transition: opacity 0.3s ease;
+}
+
+/* Focus Accessibility */
+a:focus,
+button:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Global Theme Transition */
+* {
+  transition: background-color 0.3s ease,
+              color 0.3s ease,
+              border-color 0.3s ease;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ===============================
+   Profile Layout
+================================ */
+
+.main .profile {
+  min-height: calc(100vh - var(--header-height) - var(--footer-height) - (var(--gap) * 2));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--gap) 0;
+  text-align: left;
+}
+
+.profile-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--gap);
+  width: 100%;
+}
+
+.profile-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.profile-name {
+  font-size: 72px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--primary);
+  margin-bottom: 20px;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+}
+
+.profile-quote {
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 1.4;
+  color: var(--primary);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.profile-quote br {
+  display: block;
+  margin-top: 10px;
+}
+
+.profile-image-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-photo {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  object-fit: cover;
+}
+
+.profile-social {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  padding-top: 40px;
+  border-top: 1px solid var(--border);
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  padding-left: var(--gap);
+  padding-right: var(--gap);
+}
+
+/* Profile Image Styles */
+.profile-image-about,
+.profile-image-about img {
+  display: block;
+  margin: 1.5rem auto;
+  border-radius: 50%;
+  width: 180px !important;
+  height: 180px !important;
+  object-fit: cover;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 3px solid var(--tertiary);
+}
+
+.profile-image-about:hover,
+.profile-image-about:hover img {
+  transform: scale(1.03);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Legacy Image */
+.profile-image-large,
+.profile-image-large img {
+  display: block;
+  margin: 2rem auto;
+  border-radius: 50%;
+  width: 300px !important;
+  height: 300px !important;
+  object-fit: cover;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 4px solid var(--primary);
+}
+
+.profile-image-large:hover,
+.profile-image-large:hover img {
+  transform: scale(1.05);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* About Page */
+.post-content figure.align-center img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ===============================
+   Responsive
+================================ */
+
+@media (max-width: 768px) {
+  .post-entry:hover {
+    transform: none;
+  }
+
+  .post-content img:hover {
+    transform: none;
+  }
+
+  .profile-image-large,
+  .profile-image-large img {
+    width: 250px !important;
+    height: 250px !important;
+  }
+
+  .profile-image-about,
+  .profile-image-about img {
+    width: 150px !important;
+    height: 150px !important;
+  }
+
+  #menu a {
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  #menu a span.active {
+    padding: 10px 12px;
+  }
+
+  .header {
+    padding: 0;
+  }
+
+  .profile-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .profile-name {
+    font-size: 48px;
+  }
+
+  .profile-quote {
+    font-size: 24px;
+  }
+
+  .profile-photo {
+    max-width: 100%;
+  }
+
+  .post-entry .entry-cover img,
+  .first-entry .entry-cover img {
+    width: 50% !important;
+    max-width: 50% !important;
+  }
+}

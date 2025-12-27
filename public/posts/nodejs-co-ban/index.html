@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=51556&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Node.js cơ bản - JavaScript trên Server | Blog Lập Trình Mạng</title>
+<meta name="keywords" content="JavaScript, Node.js, Backend, Server, NPM, Express">
+<meta name="description" content="Tìm hiểu về Node.js - cách chạy JavaScript trên server side">
+<meta name="author" content="Sinh viên CNTT">
+<link rel="canonical" href="http://localhost:51556/posts/nodejs-co-ban/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.f74fcb36989005ee49e23ee7c043721979a734c1142e502c8a3f109c7904a693.css" integrity="sha256-90/LNpiQBe5J4j7nwENyGXmnNMEULlAsij8QnHkEppM=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:51556/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:51556/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:51556/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:51556/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:51556/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:51556/posts/nodejs-co-ban/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="http://localhost:51556/posts/nodejs-co-ban/">
+  <meta property="og:site_name" content="Blog Lập Trình Mạng">
+  <meta property="og:title" content="Node.js cơ bản - JavaScript trên Server">
+  <meta property="og:description" content="Tìm hiểu về Node.js - cách chạy JavaScript trên server side">
+  <meta property="og:locale" content="vi-vn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-12-13T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-12-13T00:00:00+00:00">
+    <meta property="article:tag" content="JavaScript">
+    <meta property="article:tag" content="Node.js">
+    <meta property="article:tag" content="Backend">
+    <meta property="article:tag" content="Server">
+    <meta property="article:tag" content="NPM">
+    <meta property="article:tag" content="Express">
+    <meta property="og:image" content="http://localhost:51556/images/nodejs.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:51556/images/nodejs.jpg">
+<meta name="twitter:title" content="Node.js cơ bản - JavaScript trên Server">
+<meta name="twitter:description" content="Tìm hiểu về Node.js - cách chạy JavaScript trên server side">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://localhost:51556/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Node.js cơ bản - JavaScript trên Server",
+      "item": "http://localhost:51556/posts/nodejs-co-ban/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Node.js cơ bản - JavaScript trên Server",
+  "name": "Node.js cơ bản - JavaScript trên Server",
+  "description": "Tìm hiểu về Node.js - cách chạy JavaScript trên server side",
+  "keywords": [
+    "JavaScript", "Node.js", "Backend", "Server", "NPM", "Express"
+  ],
+  "articleBody": "Giới thiệu Node.js là một JavaScript runtime được xây dựng trên Chrome’s V8 JavaScript engine. Nó cho phép chạy JavaScript trên server side, mở ra khả năng phát triển full-stack với một ngôn ngữ duy nhất.\nNode.js là gì? Node.js là một platform cho phép chạy JavaScript bên ngoài browser. Nó sử dụng event-driven, non-blocking I/O model, làm cho nó nhẹ và hiệu quả cho các ứng dụng real-time.\nĐặc điểm chính ⚡ Non-blocking I/O: Xử lý nhiều request đồng thời 🚀 Fast: Được xây dựng trên V8 engine 📦 NPM: Package manager lớn nhất thế giới 🔄 Event-driven: Phù hợp cho real-time applications Cài đặt Node.js Kiểm tra phiên bản node --version npm --version Tạo project mới mkdir my-node-app cd my-node-app npm init -y File System Module Đọc file const fs = require('fs'); // Đọc file đồng bộ const data = fs.readFileSync('file.txt', 'utf8'); console.log(data); // Đọc file bất đồng bộ fs.readFile('file.txt', 'utf8', (err, data) =\u003e { if (err) { console.error(err); return; } console.log(data); }); // Với Promises (Node.js 10+) const fsPromises = require('fs').promises; async function readFile() { try { const data = await fsPromises.readFile('file.txt', 'utf8'); console.log(data); } catch (err) { console.error(err); } } Ghi file const fs = require('fs'); // Ghi file đồng bộ fs.writeFileSync('output.txt', 'Hello Node.js'); // Ghi file bất đồng bộ fs.writeFile('output.txt', 'Hello Node.js', (err) =\u003e { if (err) { console.error(err); return; } console.log('File written successfully'); }); HTTP Module Tạo HTTP Server const http = require('http'); const server = http.createServer((req, res) =\u003e { res.writeHead(200, { 'Content-Type': 'text/html' }); res.end('Hello Node.js!'); }); server.listen(3000, () =\u003e { console.log('Server running on http://localhost:3000'); }); Routing đơn giản const http = require('http'); const server = http.createServer((req, res) =\u003e { const url = req.url; if (url === '/') { res.writeHead(200, { 'Content-Type': 'text/html' }); res.end('Home Page'); } else if (url === '/about') { res.writeHead(200, { 'Content-Type': 'text/html' }); res.end('About Page'); } else { res.writeHead(404, { 'Content-Type': 'text/html' }); res.end('404 Not Found'); } }); server.listen(3000); NPM - Node Package Manager Cài đặt package # Local install npm install express # Global install npm install -g nodemon # Dev dependencies npm install --save-dev jest package.json { \"name\": \"my-app\", \"version\": \"1.0.0\", \"description\": \"My Node.js app\", \"main\": \"index.js\", \"scripts\": { \"start\": \"node index.js\", \"dev\": \"nodemon index.js\", \"test\": \"jest\" }, \"dependencies\": { \"express\": \"^4.18.0\" }, \"devDependencies\": { \"nodemon\": \"^2.0.0\" } } Express.js Framework Cài đặt Express npm install express Server đơn giản với Express const express = require('express'); const app = express(); const PORT = 3000; app.get('/', (req, res) =\u003e { res.send('Hello Express!'); }); app.get('/api/users', (req, res) =\u003e { res.json({ users: ['John', 'Jane'] }); }); app.listen(PORT, () =\u003e { console.log(`Server running on http://localhost:${PORT}`); }); Middleware const express = require('express'); const app = express(); // Built-in middleware app.use(express.json()); // Parse JSON app.use(express.urlencoded({ extended: true })); // Parse form data // Custom middleware app.use((req, res, next) =\u003e { console.log(`${req.method} ${req.path}`); next(); }); // Route-specific middleware function authMiddleware(req, res, next) { const token = req.headers.authorization; if (token) { next(); } else { res.status(401).json({ error: 'Unauthorized' }); } } app.get('/protected', authMiddleware, (req, res) =\u003e { res.json({ message: 'Protected route' }); }); Environment Variables Sử dụng dotenv npm install dotenv require('dotenv').config(); const PORT = process.env.PORT || 3000; const DB_URL = process.env.DATABASE_URL; console.log(`Server running on port ${PORT}`); .env file PORT=3000 DATABASE_URL=mongodb://localhost:27017/mydb SECRET_KEY=your-secret-key Modules và Exports Export module // math.js function add(a, b) { return a + b; } function subtract(a, b) { return a - b; } // Named exports module.exports = { add, subtract }; // Hoặc exports.add = add; exports.subtract = subtract; Import module // app.js const { add, subtract } = require('./math'); console.log(add(2, 3)); // 5 console.log(subtract(5, 2)); // 3 ES6 Modules // math.mjs export function add(a, b) { return a + b; } // app.mjs import { add } from './math.mjs'; console.log(add(2, 3)); Error Handling // Try-catch async function fetchData() { try { const data = await getData(); return data; } catch (error) { console.error('Error:', error.message); throw error; } } // Error middleware trong Express app.use((err, req, res, next) =\u003e { console.error(err.stack); res.status(500).json({ error: 'Something went wrong!' }); }); Best Practices ✅ Sử dụng async/await:\n// Đúng async function getData() { const data = await fetchData(); return data; } ✅ Environment variables cho config:\nconst config = { port: process.env.PORT || 3000, dbUrl: process.env.DATABASE_URL }; ✅ Error handling:\nprocess.on('uncaughtException', (err) =\u003e { console.error('Uncaught Exception:', err); process.exit(1); }); ✅ Logging:\nconst winston = require('winston'); const logger = winston.createLogger({ level: 'info', format: winston.format.json(), transports: [ new winston.transports.File({ filename: 'error.log', level: 'error' }), new winston.transports.File({ filename: 'combined.log' }) ] }); Ứng dụng thực tế Node.js được sử dụng trong:\n🌐 Web Servers: Express, Koa, Fastify 📱 APIs: REST APIs, GraphQL 💬 Real-time Apps: Chat apps, Collaboration tools 🔄 Microservices: Service-oriented architecture 🛠️ Build Tools: Webpack, Gulp, Grunt 📊 Data Processing: ETL pipelines, Data streaming Kết luận Node.js đã cách mạng hóa backend development bằng cách cho phép sử dụng JavaScript ở cả frontend và backend. Nó là công cụ mạnh mẽ cho việc xây dựng scalable, real-time applications.\nTài liệu tham khảo Node.js Official Documentation Express.js Guide NPM Documentation Node.js Best Practices Bạn có câu hỏi về Node.js? Hãy để lại comment bên dưới! 💬\n",
+  "wordCount" : "852",
+  "inLanguage": "en",
+  "image":"http://localhost:51556/images/nodejs.jpg","datePublished": "2025-12-13T00:00:00Z",
+  "dateModified": "2025-12-13T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Sinh viên CNTT"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:51556/posts/nodejs-co-ban/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Blog Lập Trình Mạng",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:51556/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:51556/" accesskey="h" title="Blog Lập Trình Mạng (Alt + H)">Blog Lập Trình Mạng</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div><ul id="menu">
+            <li>
+                <a href="http://localhost:51556/" title="Trang chủ">
+                    <span>Trang chủ</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:51556/posts/" title="Blog">
+                    <span>Blog</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:51556/about/" title="Giới thiệu">
+                    <span>Giới thiệu</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:51556/search/" title="Tìm kiếm">
+                    <span>Tìm kiếm</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:51556/projects/" title="Dự án">
+                    <span>Dự án</span>
+                </a>
+            </li>
+        </ul></nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:51556/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:51556/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Node.js cơ bản - JavaScript trên Server
+    </h1>
+    <div class="post-description">
+      Tìm hiểu về Node.js - cách chạy JavaScript trên server side
+    </div>
+    <div class="post-meta"><span title='2025-12-13 00:00:00 +0000 UTC'>December 13, 2025</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>852 words</span>&nbsp;·&nbsp;<span>Sinh viên CNTT</span>
+
+</div>
+  </header> 
+<figure class="entry-cover">
+        <img loading="eager" src="http://localhost:51556/images/nodejs.jpg" alt="Node.js cơ bản">
+        <figcaption>Node.js cơ bản</figcaption>
+</figure><div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#giới-thiệu">Giới thiệu</a></li>
+    <li><a href="#nodejs-là-gì">Node.js là gì?</a>
+      <ul>
+        <li><a href="#đặc-điểm-chính">Đặc điểm chính</a></li>
+      </ul>
+    </li>
+    <li><a href="#cài-đặt-nodejs">Cài đặt Node.js</a>
+      <ul>
+        <li><a href="#kiểm-tra-phiên-bản">Kiểm tra phiên bản</a></li>
+        <li><a href="#tạo-project-mới">Tạo project mới</a></li>
+      </ul>
+    </li>
+    <li><a href="#file-system-module">File System Module</a>
+      <ul>
+        <li><a href="#đọc-file">Đọc file</a></li>
+        <li><a href="#ghi-file">Ghi file</a></li>
+      </ul>
+    </li>
+    <li><a href="#http-module">HTTP Module</a>
+      <ul>
+        <li><a href="#tạo-http-server">Tạo HTTP Server</a></li>
+        <li><a href="#routing-đơn-giản">Routing đơn giản</a></li>
+      </ul>
+    </li>
+    <li><a href="#npm---node-package-manager">NPM - Node Package Manager</a>
+      <ul>
+        <li><a href="#cài-đặt-package">Cài đặt package</a></li>
+        <li><a href="#packagejson">package.json</a></li>
+      </ul>
+    </li>
+    <li><a href="#expressjs-framework">Express.js Framework</a>
+      <ul>
+        <li><a href="#cài-đặt-express">Cài đặt Express</a></li>
+        <li><a href="#server-đơn-giản-với-express">Server đơn giản với Express</a></li>
+        <li><a href="#middleware">Middleware</a></li>
+      </ul>
+    </li>
+    <li><a href="#environment-variables">Environment Variables</a>
+      <ul>
+        <li><a href="#sử-dụng-dotenv">Sử dụng dotenv</a></li>
+        <li><a href="#env-file">.env file</a></li>
+      </ul>
+    </li>
+    <li><a href="#modules-và-exports">Modules và Exports</a>
+      <ul>
+        <li><a href="#export-module">Export module</a></li>
+        <li><a href="#import-module">Import module</a></li>
+        <li><a href="#es6-modules">ES6 Modules</a></li>
+      </ul>
+    </li>
+    <li><a href="#error-handling">Error Handling</a></li>
+    <li><a href="#best-practices">Best Practices</a></li>
+    <li><a href="#ứng-dụng-thực-tế">Ứng dụng thực tế</a></li>
+    <li><a href="#kết-luận">Kết luận</a></li>
+    <li><a href="#tài-liệu-tham-khảo">Tài liệu tham khảo</a></li>
+  </ul>
+</nav>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h2 id="giới-thiệu">Giới thiệu<a hidden class="anchor" aria-hidden="true" href="#giới-thiệu">#</a></h2>
+<p>Node.js là một JavaScript runtime được xây dựng trên Chrome&rsquo;s V8 JavaScript engine. Nó cho phép chạy JavaScript trên server side, mở ra khả năng phát triển full-stack với một ngôn ngữ duy nhất.</p>
+<h2 id="nodejs-là-gì">Node.js là gì?<a hidden class="anchor" aria-hidden="true" href="#nodejs-là-gì">#</a></h2>
+<p><strong>Node.js</strong> là một platform cho phép chạy JavaScript bên ngoài browser. Nó sử dụng event-driven, non-blocking I/O model, làm cho nó nhẹ và hiệu quả cho các ứng dụng real-time.</p>
+<h3 id="đặc-điểm-chính">Đặc điểm chính<a hidden class="anchor" aria-hidden="true" href="#đặc-điểm-chính">#</a></h3>
+<ul>
+<li>⚡ <strong>Non-blocking I/O</strong>: Xử lý nhiều request đồng thời</li>
+<li>🚀 <strong>Fast</strong>: Được xây dựng trên V8 engine</li>
+<li>📦 <strong>NPM</strong>: Package manager lớn nhất thế giới</li>
+<li>🔄 <strong>Event-driven</strong>: Phù hợp cho real-time applications</li>
+</ul>
+<h2 id="cài-đặt-nodejs">Cài đặt Node.js<a hidden class="anchor" aria-hidden="true" href="#cài-đặt-nodejs">#</a></h2>
+<h3 id="kiểm-tra-phiên-bản">Kiểm tra phiên bản<a hidden class="anchor" aria-hidden="true" href="#kiểm-tra-phiên-bản">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>node --version
+</span></span><span style="display:flex;"><span>npm --version
+</span></span></code></pre></div><h3 id="tạo-project-mới">Tạo project mới<a hidden class="anchor" aria-hidden="true" href="#tạo-project-mới">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir my-node-app
+</span></span><span style="display:flex;"><span>cd my-node-app
+</span></span><span style="display:flex;"><span>npm init -y
+</span></span></code></pre></div><h2 id="file-system-module">File System Module<a hidden class="anchor" aria-hidden="true" href="#file-system-module">#</a></h2>
+<h3 id="đọc-file">Đọc file<a hidden class="anchor" aria-hidden="true" href="#đọc-file">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">fs</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;fs&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Đọc file đồng bộ
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">fs</span>.<span style="color:#a6e22e">readFileSync</span>(<span style="color:#e6db74">&#39;file.txt&#39;</span>, <span style="color:#e6db74">&#39;utf8&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">data</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Đọc file bất đồng bộ
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">fs</span>.<span style="color:#a6e22e">readFile</span>(<span style="color:#e6db74">&#39;file.txt&#39;</span>, <span style="color:#e6db74">&#39;utf8&#39;</span>, (<span style="color:#a6e22e">err</span>, <span style="color:#a6e22e">data</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">err</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#a6e22e">err</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">data</span>);
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Với Promises (Node.js 10+)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">fsPromises</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;fs&#39;</span>).<span style="color:#a6e22e">promises</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">readFile</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fsPromises</span>.<span style="color:#a6e22e">readFile</span>(<span style="color:#e6db74">&#39;file.txt&#39;</span>, <span style="color:#e6db74">&#39;utf8&#39;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">data</span>);
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">err</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#a6e22e">err</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="ghi-file">Ghi file<a hidden class="anchor" aria-hidden="true" href="#ghi-file">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">fs</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;fs&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Ghi file đồng bộ
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">fs</span>.<span style="color:#a6e22e">writeFileSync</span>(<span style="color:#e6db74">&#39;output.txt&#39;</span>, <span style="color:#e6db74">&#39;Hello Node.js&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Ghi file bất đồng bộ
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">fs</span>.<span style="color:#a6e22e">writeFile</span>(<span style="color:#e6db74">&#39;output.txt&#39;</span>, <span style="color:#e6db74">&#39;Hello Node.js&#39;</span>, (<span style="color:#a6e22e">err</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">err</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#a6e22e">err</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;File written successfully&#39;</span>);
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><h2 id="http-module">HTTP Module<a hidden class="anchor" aria-hidden="true" href="#http-module">#</a></h2>
+<h3 id="tạo-http-server">Tạo HTTP Server<a hidden class="anchor" aria-hidden="true" href="#tạo-http-server">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">http</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;http&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">server</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">createServer</span>((<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">writeHead</span>(<span style="color:#ae81ff">200</span>, { <span style="color:#e6db74">&#39;Content-Type&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;text/html&#39;</span> });
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">end</span>(<span style="color:#e6db74">&#39;&lt;h1&gt;Hello Node.js!&lt;/h1&gt;&#39;</span>);
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">server</span>.<span style="color:#a6e22e">listen</span>(<span style="color:#ae81ff">3000</span>, () =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;Server running on http://localhost:3000&#39;</span>);
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><h3 id="routing-đơn-giản">Routing đơn giản<a hidden class="anchor" aria-hidden="true" href="#routing-đơn-giản">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">http</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;http&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">server</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">createServer</span>((<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">url</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">url</span>;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">url</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;/&#39;</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">writeHead</span>(<span style="color:#ae81ff">200</span>, { <span style="color:#e6db74">&#39;Content-Type&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;text/html&#39;</span> });
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">end</span>(<span style="color:#e6db74">&#39;&lt;h1&gt;Home Page&lt;/h1&gt;&#39;</span>);
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">url</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;/about&#39;</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">writeHead</span>(<span style="color:#ae81ff">200</span>, { <span style="color:#e6db74">&#39;Content-Type&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;text/html&#39;</span> });
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">end</span>(<span style="color:#e6db74">&#39;&lt;h1&gt;About Page&lt;/h1&gt;&#39;</span>);
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">writeHead</span>(<span style="color:#ae81ff">404</span>, { <span style="color:#e6db74">&#39;Content-Type&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;text/html&#39;</span> });
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">end</span>(<span style="color:#e6db74">&#39;&lt;h1&gt;404 Not Found&lt;/h1&gt;&#39;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">server</span>.<span style="color:#a6e22e">listen</span>(<span style="color:#ae81ff">3000</span>);
+</span></span></code></pre></div><h2 id="npm---node-package-manager">NPM - Node Package Manager<a hidden class="anchor" aria-hidden="true" href="#npm---node-package-manager">#</a></h2>
+<h3 id="cài-đặt-package">Cài đặt package<a hidden class="anchor" aria-hidden="true" href="#cài-đặt-package">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Local install</span>
+</span></span><span style="display:flex;"><span>npm install express
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Global install</span>
+</span></span><span style="display:flex;"><span>npm install -g nodemon
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Dev dependencies</span>
+</span></span><span style="display:flex;"><span>npm install --save-dev jest
+</span></span></code></pre></div><h3 id="packagejson">package.json<a hidden class="anchor" aria-hidden="true" href="#packagejson">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;my-app&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;version&#34;</span>: <span style="color:#e6db74">&#34;1.0.0&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;description&#34;</span>: <span style="color:#e6db74">&#34;My Node.js app&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;main&#34;</span>: <span style="color:#e6db74">&#34;index.js&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;scripts&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;start&#34;</span>: <span style="color:#e6db74">&#34;node index.js&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;dev&#34;</span>: <span style="color:#e6db74">&#34;nodemon index.js&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;test&#34;</span>: <span style="color:#e6db74">&#34;jest&#34;</span>
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;dependencies&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;express&#34;</span>: <span style="color:#e6db74">&#34;^4.18.0&#34;</span>
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;devDependencies&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;nodemon&#34;</span>: <span style="color:#e6db74">&#34;^2.0.0&#34;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="expressjs-framework">Express.js Framework<a hidden class="anchor" aria-hidden="true" href="#expressjs-framework">#</a></h2>
+<h3 id="cài-đặt-express">Cài đặt Express<a hidden class="anchor" aria-hidden="true" href="#cài-đặt-express">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>npm install express
+</span></span></code></pre></div><h3 id="server-đơn-giản-với-express">Server đơn giản với Express<a hidden class="anchor" aria-hidden="true" href="#server-đơn-giản-với-express">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">express</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;express&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">app</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">express</span>();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">PORT</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3000</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#39;/&#39;</span>, (<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">send</span>(<span style="color:#e6db74">&#39;Hello Express!&#39;</span>);
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#39;/api/users&#39;</span>, (<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">json</span>({ <span style="color:#a6e22e">users</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#39;John&#39;</span>, <span style="color:#e6db74">&#39;Jane&#39;</span>] });
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">listen</span>(<span style="color:#a6e22e">PORT</span>, () =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Server running on http://localhost:</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">PORT</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><h3 id="middleware">Middleware<a hidden class="anchor" aria-hidden="true" href="#middleware">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">express</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;express&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">app</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">express</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Built-in middleware
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">use</span>(<span style="color:#a6e22e">express</span>.<span style="color:#a6e22e">json</span>()); <span style="color:#75715e">// Parse JSON
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">use</span>(<span style="color:#a6e22e">express</span>.<span style="color:#a6e22e">urlencoded</span>({ <span style="color:#a6e22e">extended</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span> })); <span style="color:#75715e">// Parse form data
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Custom middleware
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">use</span>((<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>, <span style="color:#a6e22e">next</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">method</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">path</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">next</span>();
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Route-specific middleware
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">authMiddleware</span>(<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>, <span style="color:#a6e22e">next</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">token</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">headers</span>.<span style="color:#a6e22e">authorization</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">token</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">next</span>();
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">status</span>(<span style="color:#ae81ff">401</span>).<span style="color:#a6e22e">json</span>({ <span style="color:#a6e22e">error</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Unauthorized&#39;</span> });
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#39;/protected&#39;</span>, <span style="color:#a6e22e">authMiddleware</span>, (<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">json</span>({ <span style="color:#a6e22e">message</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Protected route&#39;</span> });
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><h2 id="environment-variables">Environment Variables<a hidden class="anchor" aria-hidden="true" href="#environment-variables">#</a></h2>
+<h3 id="sử-dụng-dotenv">Sử dụng dotenv<a hidden class="anchor" aria-hidden="true" href="#sử-dụng-dotenv">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>npm install dotenv
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;dotenv&#39;</span>).<span style="color:#a6e22e">config</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">PORT</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">PORT</span> <span style="color:#f92672">||</span> <span style="color:#ae81ff">3000</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">DB_URL</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">DATABASE_URL</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Server running on port </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">PORT</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span></code></pre></div><h3 id="env-file">.env file<a hidden class="anchor" aria-hidden="true" href="#env-file">#</a></h3>
+<pre tabindex="0"><code>PORT=3000
+DATABASE_URL=mongodb://localhost:27017/mydb
+SECRET_KEY=your-secret-key
+</code></pre><h2 id="modules-và-exports">Modules và Exports<a hidden class="anchor" aria-hidden="true" href="#modules-và-exports">#</a></h2>
+<h3 id="export-module">Export module<a hidden class="anchor" aria-hidden="true" href="#export-module">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// math.js
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">add</span>(<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">b</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">subtract</span>(<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">b</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Named exports
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">add</span>, <span style="color:#a6e22e">subtract</span> };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Hoặc
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">exports</span>.<span style="color:#a6e22e">add</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">add</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">exports</span>.<span style="color:#a6e22e">subtract</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">subtract</span>;
+</span></span></code></pre></div><h3 id="import-module">Import module<a hidden class="anchor" aria-hidden="true" href="#import-module">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// app.js
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">add</span>, <span style="color:#a6e22e">subtract</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;./math&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">add</span>(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>)); <span style="color:#75715e">// 5
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">subtract</span>(<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">2</span>)); <span style="color:#75715e">// 3
+</span></span></span></code></pre></div><h3 id="es6-modules">ES6 Modules<a hidden class="anchor" aria-hidden="true" href="#es6-modules">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// math.mjs
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">add</span>(<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">b</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// app.mjs
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">add</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./math.mjs&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">add</span>(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>));
+</span></span></code></pre></div><h2 id="error-handling">Error Handling<a hidden class="anchor" aria-hidden="true" href="#error-handling">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Try-catch
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">fetchData</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">getData</span>();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">data</span>;
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">error</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#39;Error:&#39;</span>, <span style="color:#a6e22e">error</span>.<span style="color:#a6e22e">message</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">throw</span> <span style="color:#a6e22e">error</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Error middleware trong Express
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">use</span>((<span style="color:#a6e22e">err</span>, <span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>, <span style="color:#a6e22e">next</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#a6e22e">err</span>.<span style="color:#a6e22e">stack</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">status</span>(<span style="color:#ae81ff">500</span>).<span style="color:#a6e22e">json</span>({ <span style="color:#a6e22e">error</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Something went wrong!&#39;</span> });
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><h2 id="best-practices">Best Practices<a hidden class="anchor" aria-hidden="true" href="#best-practices">#</a></h2>
+<p>✅ <strong>Sử dụng async/await:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Đúng
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getData</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetchData</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">data</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>✅ <strong>Environment variables cho config:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">config</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">port</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">PORT</span> <span style="color:#f92672">||</span> <span style="color:#ae81ff">3000</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">dbUrl</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">DATABASE_URL</span>
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>✅ <strong>Error handling:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#39;uncaughtException&#39;</span>, (<span style="color:#a6e22e">err</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#39;Uncaught Exception:&#39;</span>, <span style="color:#a6e22e">err</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">exit</span>(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><p>✅ <strong>Logging:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">winston</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;winston&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">logger</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">winston</span>.<span style="color:#a6e22e">createLogger</span>({
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">level</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;info&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">format</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">winston</span>.<span style="color:#a6e22e">format</span>.<span style="color:#a6e22e">json</span>(),
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">transports</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">winston</span>.<span style="color:#a6e22e">transports</span>.<span style="color:#a6e22e">File</span>({ <span style="color:#a6e22e">filename</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;error.log&#39;</span>, <span style="color:#a6e22e">level</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;error&#39;</span> }),
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">winston</span>.<span style="color:#a6e22e">transports</span>.<span style="color:#a6e22e">File</span>({ <span style="color:#a6e22e">filename</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;combined.log&#39;</span> })
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><h2 id="ứng-dụng-thực-tế">Ứng dụng thực tế<a hidden class="anchor" aria-hidden="true" href="#ứng-dụng-thực-tế">#</a></h2>
+<p>Node.js được sử dụng trong:</p>
+<ul>
+<li>🌐 <strong>Web Servers</strong>: Express, Koa, Fastify</li>
+<li>📱 <strong>APIs</strong>: REST APIs, GraphQL</li>
+<li>💬 <strong>Real-time Apps</strong>: Chat apps, Collaboration tools</li>
+<li>🔄 <strong>Microservices</strong>: Service-oriented architecture</li>
+<li>🛠️ <strong>Build Tools</strong>: Webpack, Gulp, Grunt</li>
+<li>📊 <strong>Data Processing</strong>: ETL pipelines, Data streaming</li>
+</ul>
+<h2 id="kết-luận">Kết luận<a hidden class="anchor" aria-hidden="true" href="#kết-luận">#</a></h2>
+<p>Node.js đã cách mạng hóa backend development bằng cách cho phép sử dụng JavaScript ở cả frontend và backend. Nó là công cụ mạnh mẽ cho việc xây dựng scalable, real-time applications.</p>
+<h2 id="tài-liệu-tham-khảo">Tài liệu tham khảo<a hidden class="anchor" aria-hidden="true" href="#tài-liệu-tham-khảo">#</a></h2>
+<ul>
+<li><a href="https://nodejs.org/docs/">Node.js Official Documentation</a></li>
+<li><a href="https://expressjs.com/">Express.js Guide</a></li>
+<li><a href="https://docs.npmjs.com/">NPM Documentation</a></li>
+<li><a href="https://github.com/goldbergyoni/nodebestpractices">Node.js Best Practices</a></li>
+</ul>
+<hr>
+<p><strong>Bạn có câu hỏi về Node.js? Hãy để lại comment bên dưới!</strong> 💬</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:51556/tags/javascript/">JavaScript</a></li>
+      <li><a href="http://localhost:51556/tags/node.js/">Node.js</a></li>
+      <li><a href="http://localhost:51556/tags/backend/">Backend</a></li>
+      <li><a href="http://localhost:51556/tags/server/">Server</a></li>
+      <li><a href="http://localhost:51556/tags/npm/">NPM</a></li>
+      <li><a href="http://localhost:51556/tags/express/">Express</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="http://localhost:51556/posts/multithreading-java/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Multithreading trong Java - Lập trình đa luồng</span>
+  </a>
+  <a class="next" href="http://localhost:51556/posts/oop-java/">
+    <span class="title">Next »</span>
+    <br>
+    <span>OOP trong Java - Lập trình hướng đối tượng</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="http://localhost:51556/">Blog Lập Trình Mạng</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><script defer src="/js/custom-effects.min.js"></script>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>
