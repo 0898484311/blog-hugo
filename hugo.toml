@@ -14,7 +14,6 @@ pagerSize = 3
 [outputs]
 home = ["HTML", "JSON", "RSS"]
 
-# Main sections - sections hiển thị trên homepage
 [params]
 mainSections = ["posts"]
 env = "production"
@@ -22,7 +21,7 @@ title = "Blog Lập Trình Mạng"
 description = "Blog chia sẻ kiến thức về lập trình Java, mạng máy tính và phát triển phần mềm"
 author = "Sinh viên CNTT"
 keywords = ["Java", "Lập trình mạng", "Socket", "CNTT", "Phát triển phần mềm"]
-images = ["/images/og-image.png"]  # Thêm ảnh OG sau
+images = ["images/og-image.png"]
 readingTime = true
 ShowReadingTime = true
 ShowPostNavLinks = true
@@ -39,19 +38,17 @@ hideSummary = false
 showtoc = true
 tocopen = false
 
-# Profile Mode Configuration
 [params.profileMode]
 enabled = true
 name = "SINH VIÊN CNTT"
 quote = "Build yourself quietly,<br>and let your success speak for you."
 title = "Blog Lập Trình Mạng"
 subtitle = "Chia sẻ kiến thức về lập trình và công nghệ"
-imageUrl = "/images/profile.jpg"  # Đặt ảnh vào thư mục static/images/profile.jpg
-imageWidth = 500
-imageHeight = 600
+imageUrl = "images/profile.jpg"
+imageWidth = 150
+imageHeight = 150
 imageTitle = "Profile Image"
 
-# Social Icons
 [[params.socialIcons]]
 name = "github"
 url = "https://github.com"
@@ -64,28 +61,14 @@ title = "LinkedIn"
 
 [[params.socialIcons]]
 name = "email"
-url = "https://accounts.google.com"
+url = "mailto:your-email@gmail.com"
 title = "Email"
 
-# Author Information
 [author]
 name = "Sinh viên CNTT"
-homepage = "/about/"
+homepage = "about"
 
-# SEO Configuration
-[params.analytics]
-# Google Analytics - thêm ID nếu có
-# [params.analytics.google]
-# id = "G-XXXXXXXXXX"
-# SiteVerificationTag = ""
-
-# Google Site Verification - thêm tag nếu có
-[params.analytics.google]
-SiteVerificationTag = ""
-
-# Menu Configuration
 [menu]
-
 [[menu.main]]
 name = "Trang chủ"
 url = "/"
@@ -93,20 +76,20 @@ weight = 1
 
 [[menu.main]]
 name = "Blog"
-url = "/posts/"
+url = "posts"
 weight = 2
 
 [[menu.main]]
 name = "Giới thiệu"
-url = "/about/"
+url = "about"
 weight = 3
 
 [[menu.main]]
 name = "Tìm kiếm"
-url = "/search/"
+url = "search"
 weight = 4
 
 [[menu.main]]
 name = "Dự án"
-url = "/projects/"
+url = "projects"
 weight = 5
